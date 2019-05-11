@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import List from './List'
 import './App.css';
+import Messages from './Messages';
 
 class App extends Component {
   static defaultProps = {
@@ -14,6 +15,8 @@ class App extends Component {
     const { store } = this.props
     return (
       <main className='App'>
+        <Messages name="Messages" unread={0}/>
+        <Messages name="Notifications" unread={10}/>
         <header className='App-header'>
           <h1>Trelloyes!</h1>
         </header>
