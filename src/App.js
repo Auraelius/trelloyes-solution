@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import List from './List'
 import './App.css';
 import Messages from './Messages';
+import TheDate from './state/TheDate.js';
 
 class App extends Component {
   static defaultProps = {
@@ -15,6 +16,7 @@ class App extends Component {
     const { store } = this.props
     return (
       <main className='App'>
+        <TheDate />
         <Messages name="Messages" unread={0}/>
         <Messages name="Notifications" unread={10}/>
         <header className='App-header'>
