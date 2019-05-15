@@ -6,7 +6,6 @@ class TheDate extends React.Component {
     this.state = { datetime: new Date() };
   }
 
-
   render() {
     console.log(this.state);
     return (
