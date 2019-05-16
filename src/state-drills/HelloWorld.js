@@ -6,7 +6,7 @@ class HelloWorld extends React.Component {
   };
 
   constructor(props) {
-    console.log('HelloWorld: constructor: props = ', props);
+    // console.log('HelloWorld: constructor: props = ', props);
     super(props);
     this.state = {
       who: this.props.who
@@ -15,7 +15,7 @@ class HelloWorld extends React.Component {
 
 
   render() {
-    console.log('HelloWorld: render: ');
+    // console.log('HelloWorld: render: ');
     return (
       <div>
         <p>

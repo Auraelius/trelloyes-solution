@@ -8,7 +8,7 @@ class Counter extends React.Component {
   static defaultProps = {count:0, step:1};
 
   constructor(props){
-    console.log('Counter: constructor: props = ', props);
+    // console.log('Counter: constructor: props = ', props);
     super(props);
     this.state = {
       count: this.props.count,
@@ -22,8 +22,8 @@ class Counter extends React.Component {
   // they do not create one of their own.
 
   handleButtonClick = () => {
-    console.log('Counter : handleButtonClick: props = ',this.props);
-    console.log('Counter : handleButtonClick: state = ',this.state);
+    // console.log('Counter : handleButtonClick: props = ',this.props);
+    // console.log('Counter : handleButtonClick: state = ',this.state);
     const newCount = this.state.count + this.state.step;
     this.setState({count:newCount})
   }
