@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordian Component renders empty given no sections 1`] = `<ul />`;
