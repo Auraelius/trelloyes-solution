@@ -19,9 +19,6 @@ const tabsProp = [
 ];
 
 
-
-
-
 class App extends Component {
   static defaultProps = {
     store: {
@@ -40,7 +37,6 @@ class App extends Component {
 
         {/* accordian sequence */}
         <Tabs tabs={tabsProp} />
-        <hr/>
 
         {/* state lesson stuff */}
         <TheDate />
