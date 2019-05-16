@@ -1,10 +1,9 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import Accordian from './Accordion'
+import Accordion from './Accordion'
 
-describe(`Accordian Component`, () =>{
+describe(`Accordion Component`, () =>{
   // test data
   const sections = [
     {
@@ -21,15 +20,31 @@ describe(`Accordian Component`, () =>{
     },
   ]
 
-  it('renders without errors', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Accordian />, div);
-    ReactDOM.unmountComponentAtNode(div);
+  it('renders empty given no Accordion without errors', () => {
+    const wrapper = shallow(<Accordion />)
+    expect(toJson(wrapper)).toMatchSnapshot()
   })
   
   it('renders empty given no sections', () => {
-    const wrapper = shallow(<Accordian />);
+    const wrapper = shallow(<Accordion />);
     expect(toJson(wrapper)).toMatchSnapshot();
   })
 
-}) // describe Accordian Component
+  it('renders the no sections by default', () => {
+    const wrapper = shallow(<Accordion sections={sections} />)
+    expect(toJson(wrapper)).toMatchSnapshot()
+  })
+
+  it('opens any clicked section', () => {
+    const wrapper = shallow(<Accordion sections={sections} />)
+    wrapper.find('button').at(1).simulate('click')
+    expect(toJson(wrapper)).toMatchSnapshot()
+  })
+  it('only opens one section at a time', () => {
+    const wrapper = shallow(<Accordion sections={sections} />)
+    wrapper.find('button').at(1).simulate('click')
+    wrapper.find('button').at(2).simulate('click')
+    expect(toJson(wrapper)).toMatchSnapshot()
+  })
+
+}) // describe Accordion Component

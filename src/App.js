@@ -8,7 +8,7 @@ import HelloWorld from './state-drills/HelloWorld';
 import Bomb from './state-drills/Bomb';
 import RouletteGun from './state-drills/RouletteGun';
 import Tabs from './state/Tabs';
-import Accordian from './state-drills/Accordion'
+import Accordion from './state-drills/Accordion'
 
 
 const tabsProp = [
@@ -51,8 +51,8 @@ class App extends Component {
     return (
       <main className='App'>
 
-      {/* accordian sequence */}
-      <Accordian sections = {sections} />
+      {/* Accordion sequence */}
+      <Accordion sections = {sections} />
 
         {/* tabs sequence */}
         <Tabs tabs={tabsProp} />

@@ -1,39 +1,41 @@
 import React from "react";
+import './Accordion.css'
 
-export default class Accordian extends React.Component {
+export default class Accordion extends React.Component {
   static defaultProps = { sections: [] };
   state = {
-    AnySectionDisplayed: false,
-    currentSectionIndex:0
+    currentSectionIndex:null // "The component renders no sections as active by default" 
   };
   handleButtonClick(index){
-    this.setState({ AnySectionDisplayed:true, currentSectionIndex: index })
+    this.setState({ currentSectionIndex: index })
   }
 
   renderContent() {
     const currentSection = this.props.sections[this.state.currentSectionIndex]
     return (
-      <div className='content'>
+      <p className='content'>
         {currentSection.content}
-      </div>
+      </p>
     )
   }
 
   renderSections() {
     return this.props.sections.map((section, index) => (
-      <li>
-        <button key={index} onClick={() => this.handleButtonClick(index)}>
+      // the repeated element needs the key
+      <li key={index} className='Accordion__item'>
+        {/* but the index is also useful to ident the button being clicked */}
+        <button onClick={() => this.handleButtonClick(index)}> 
           {section.title}
         </button>
-        {/* requirement = "The component renders no sections as active by default" */}
-        {this.state.AnySectionDisplayed && (index === this.state.currentSectionIndex) 
+        {/* if the current section index is non-null and matches the index, display the content */}
+        {(index === this.state.currentSectionIndex) 
           && this.renderContent()}
       </li>
-    ))
+    )) 
   }
   render(){
     return(
-      <ul>
+      <ul className='Accordion'>
         {this.renderSections()}
       </ul>
     );
