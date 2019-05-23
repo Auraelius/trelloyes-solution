@@ -10,18 +10,31 @@ class DemonymApp extends Component {
     super(props);
     this.state = {
       countries: [],
-      selected: null
+      selected: null,
+      error: null // missing from lesson example
     };
   }
 
   componentDidMount() {
-    fetch('https://country.register.gov.uk/records.json?page-size=5000')
+      fetch('https://country.register.gov.uk/records.json?page-size=5000')
+      .then(response => {
+        if(!response.ok) {
+          throw new Error('Something went wrong, please try again later.')
+        }
+        return response;
+      })
       .then(response => response.json())
       .then(data => {
         const countries = Object.keys(data)
               .map(key => data[key].item[0]);
         this.setState({
-          countries
+          countries,
+          error: null
+        });
+      })
+      .catch(err => {
+        this.setState({
+          error: err.message
         });
       });
   }
@@ -37,8 +50,13 @@ class DemonymApp extends Component {
           ? <Demonym name={this.state.selected['citizen-names']} country={this.state.selected.name}/>
           : <div className="demonym_app__placeholder">Select a country above</div>;
 
+    const error = this.state.error
+          ? <div className="demonym_app__error">{this.state.error}</div>
+          : "";
+
     return (
       <div className="demonym_app">
+        {error}
         <CountrySelector
           countries={this.state.countries}
           changeHandler={selected => this.setSelected(selected)}/>
