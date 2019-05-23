@@ -9,6 +9,10 @@ import Bomb from './state-drills/Bomb';
 import RouletteGun from './state-drills/RouletteGun';
 import Tabs from './state/Tabs';
 import Accordion from './state-drills/Accordion'
+import DemonynApp from './demonymapp/demonymApp';
+
+
+
 
 
 const tabsProp = [
@@ -51,8 +55,10 @@ class App extends Component {
     return (
       <main className='App'>
 
-      {/* Accordion sequence */}
-      <Accordion sections = {sections} />
+        <DemonynApp/>
+
+        {/* Accordion sequence */}
+        <Accordion sections = {sections} />
 
         {/* tabs sequence */}
         <Tabs tabs={tabsProp} />
